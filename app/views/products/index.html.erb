@@ -1,0 +1,21 @@
+<%= link_to 'Crear Producto', new_product_path %>
+<table class="table" id="transactions">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Precio</th>
+      <th>Categorías</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.categories.pluck(:name).join(", ") %></td>
+        <td><%= link_to 'Editar', edit_product_path(product) %> | <%= link_to 'Eliminar', product_path(product), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
